@@ -40,30 +40,30 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+          <li class="breadcrumb-item active" aria-current="page">Edit User</li> 
         </ol>
       </nav>
 
       <% user.forEach(function(you){%>
-      <form class="row g-3 needs-validation" method="POST" action="/edituser/<%= you.firstName %>" novalidate>
+      <form class="row g-3 needs-validation" method="POST" action="/edittodo/<%= you.name %>" novalidate>
         <div class="mb-3">
-            <label for="First Name" class="form-label">First name</label>
-            <input type="text" value="<%= you.firstName %>" name="first_name" class="form-control" id="exampleInputEmail1" >
-        </div>
-
-        <div class="mb-3">
-            <label for="Last Name" class="form-label">Last Name</label>
-            <input type="text" value="<%= you.lastName %>" name="last_name" class="form-control" id="exampleInputEmail1">
+            <label for="First Name" class="form-label">Name</label>
+            <input type="text" value="<%= you.name %>" name="first_name" class="form-control" id="exampleInputEmail1" >
         </div>
         
         <div class="mb-3">
-          <label for="Email" class="form-label">Email address</label>
-          <input type="email" value="<%= you.email %>" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="Email" class="form-label">Description</label>
+          <input type="email" value="<%= you.description %>" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
 
         <div class="mb-3">
-            <label for="Phone" class="form-label">Phone Number</label>
-            <input type="number" value="<%= you.phone %>" name="phone" class="form-control" id="exampleInputEmail1">
+          <label for="Last Name" class="form-label">Status</label>
+          <select class="form-select form-select-lg mb-3" name="status" aria-label=".form-select-lg example">
+              <option selected disabled>-- Select Status --</option>
+              <option value="Not Started">Not Started</option>
+              <option value="On it">On it</option>
+              <option value="Done">Done</option>
+          </select>
         </div>
 
         <div class="mb-3">

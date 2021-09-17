@@ -15,13 +15,24 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 // Setup DB
-mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}${process.env.END_MONGODB}`, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}${process.env.END_MONGODB}`, { useNewUrlParser: true, useUnifiedTopology: true })
+// .then(() => {
+//     console.log('Nanana')
+// })
+// .catch((e) => {
+//     console.log(e)
+// }) 
+
+const uri = 'mongodb://localhost:27017/testingmic'
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
     console.log('Nanana')
 })
 .catch((e) => {
     console.log(e)
 }) 
+
+
 
 // Connection pool
 // const pool = mysql.createPool({

@@ -10,10 +10,9 @@ const home = (req, res) => {
 
 const create = (req, res) => {
     const user = new User({
-        firstName: req.body.first_name,
-        lastName: req.body.last_name,
-        email: req.body.email,
-        phone: req.body.phone,
+        name: req.body.name,
+        description: req.body.description,
+        status: req.body.status,
         comment: req.body.comment
     })
     user.save()
@@ -29,10 +28,9 @@ const create = (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const user = await User.updateOne({ firstName: req.params.name}, {$set: {
-            lastName: req.body.lastName,
-            email: req.body.email,
-            phone: req.body.phone,
+        const user = await User.updateOne({ name: req.params.name }, {$set: {
+            description: req.body.description,
+            status: req.body.status,
             comment: req.body.comment
         }},{new: true})
         console.log(user)
@@ -49,9 +47,9 @@ const find = (req, res) => {
     const searchTerm = req.body.search
     console.log(searchTerm)
     User.find({$or:[
-        {firstName: searchTerm}, 
-        {lastName: searchTerm}, 
-        {email: searchTerm}
+        {name: searchTerm}, 
+        {description: searchTerm}, 
+        {status: searchTerm}
     ]}, (err, data) => {
         // console.log(data)
         res.render('home.ejs', { user: data })
@@ -59,19 +57,19 @@ const find = (req, res) => {
 }
 
 const form = (req, res) => {
-    res.render('adduser.ejs')
+    res.render('addtodo.ejs')
 }
 
 const edit = (req, res) => {
     const userTerm = req.params.name
-    User.find({firstName: userTerm}, (err, data) => {
+    User.find({name: userTerm}, (err, data) => {
         console.log(data)
-        res.render('edituser.ejs', { user: data })
+        res.render('edittodo.ejs', { user: data })
     })
 }
 
 const deleter = (req, res) => {
-    User.deleteOne({ firstName: req.params.name}, (err) => {
+    User.deleteOne({ name: req.params.name}, (err) => {
         if (err) {
             console.log(err)
         }
@@ -83,9 +81,9 @@ const deleter = (req, res) => {
 
 const viewer = (req, res) => {
     const userTerm = req.params.name
-    User.find({firstName: userTerm}, (err, data) => {
+    User.find({name: userTerm}, (err, data) => {
         console.log(data)
-        res.render('viewuser.ejs', { user: data })
+        res.render('viewtodo.ejs', { user: data })
     })
 }
 

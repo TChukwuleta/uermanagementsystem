@@ -7,17 +7,16 @@ router.get('/', userController.home)
 
 router.post('/', userController.find)
 
-// Create
-router.post('/adduser', userController.create)
+router.get('/addtodo', userController.form)
 
-// Update
-router.post('/edituser/:name', userController.update)
+router.post('/addtodo', userController.create)
 
-router.get('/adduser', userController.form)
-router.get('/edituser/:name', userController.edit)
+router.post('/edittodo/:name', userController.update)
 
-router.get('/deleteuser/:name', userController.deleter)
+router.get('/edittodo/:name', userController.edit)
 
-router.get('/viewuser/:name', userController.viewer)
+router.get('/deletetodo/:name', userController.deleter)
 
+router.get('/viewtodo/:name', userController.viewer)
+ 
 module.exports = router

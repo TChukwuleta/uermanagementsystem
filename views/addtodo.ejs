@@ -33,35 +33,35 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">New User</li>
+              <li class="breadcrumb-item active" aria-current="page">New Todo</li>
             </ol>
         </nav>
 
 
-        <form class="row g-3 needs-validation" method="POST" action="/adduser" novalidate>
+        <form class="row g-3 needs-validation" method="POST" action="/addtodo" novalidate>
             <div class="mb-3">
-                <label for="First Name" class="form-label">First name</label>
-                <input type="text" placeholder="John" name="first_name" class="form-control" id="exampleInputEmail1" >
+                <label for="First Name" class="form-label">Name</label>
+                <input type="text" placeholder="John" name="name" class="form-control" id="exampleInputEmail1" >
+            </div>
+
+            <div class="mb-3"> 
+                <label for="Last Name" class="form-label">Description</label>
+                <input type="text" placeholder="Doe" name="description" class="form-control" id="exampleInputEmail1">
             </div>
 
             <div class="mb-3">
-                <label for="Last Name" class="form-label">Last Name</label>
-                <input type="text" placeholder="Doe" name="last_name" class="form-control" id="exampleInputEmail1">
-            </div>
-            
-            <div class="mb-3">
-              <label for="Email" class="form-label">Email address</label>
-              <input type="email" placeholder="johndoe@email.com" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-
-            <div class="mb-3">
-                <label for="Phone" class="form-label">Phone Number</label>
-                <input type="number" placeholder="+1 234 456 6789" name="phone" class="form-control" id="exampleInputEmail1">
+                <label for="Last Name" class="form-label">Status</label>
+                <select class="form-select form-select-lg mb-3" name="status" aria-label=".form-select-lg example">
+                    <option selected disabled>-- Select Status --</option>
+                    <option value="Not Started">Not Started</option>
+                    <option value="On it">On it</option>
+                    <option value="Done">Done</option>
+                </select>
             </div>
 
             <div class="mb-3">
                 <label for="Comment" class="form-label">Comment</label>
-                <textarea type="text" placeholder="Heyyyy" name="comment" class="form-control" id="exampleInputEmail1" style="height: 200px;" />
+                <textarea type="text" placeholder="Heyyyy" name="comment" class="form-control" id="exampleInputEmail1" style="height: 200px;"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
